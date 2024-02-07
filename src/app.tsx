@@ -26,9 +26,7 @@ export function App() {
           </p>
         </div>
 
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
+        <NoteCard note={{ date: new Date(), content: 'Hello World' }} />
       </div>
     </div>
   )
