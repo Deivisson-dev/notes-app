@@ -1,27 +1,16 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import { formatDistanceToNow } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
 import { X } from 'lucide-react'
 
-interface NoteCardProps {
-    note: {
-        date: Date
-        content: string
-    }
-}
-
-export function NoteCard(props: NoteCardProps) {
+export function NewNoteCard() {
     return (
         <Dialog.Root>
-            <Dialog.Trigger className='rounded-md text-left flex flex-col bg-slate-800 p-5 gap-3 overflow-hidden relative outline-none hover:ring-2 hover:ring-slate-600 focus-visible:ring-2 focus-visible:ring-lime-400'>
-                <span className='text-sm font-medium text-slate-300'>
-                    {props.note.date.toISOString()}
+            <Dialog.Trigger className='rounded-md flex flex-col bg-slate-700 p-5 gap-3 text-left outline-none hover:ring-2 hover:ring-slate-600 focus-visible:ring-2 focus-visible:ring-lime-400'>
+                <span className='text-sm font-medium text-slate-200'>
+                Adicionar nota
                 </span>
                 <p className='text-sm leading-6 text-slate-400'>
-                    {props.note.content}
+                Grave uma nota em áudio que será convertida para texto automaticamente.
                 </p>
-            
-                <div className='absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-black/0 pointer-events-none' />
             </Dialog.Trigger>
 
             <Dialog.Portal>
@@ -33,18 +22,18 @@ export function NoteCard(props: NoteCardProps) {
                     
                     <div className='flex flex-1 flex-col gap-3 p-5'>
                         <span className='text-sm font-medium text-slate-300'>
-                            {formatDistanceToNow(props.note.date, { locale: ptBR, addSuffix: true })}
+                            Adicionar nota
                         </span>
                         <p className='text-sm leading-6 text-slate-400'>
-                            {props.note.content}
+                            Comece <button className='font-medium text-lime-400 hover:underline'>gravando uma nota</button> em áudio ou se preferir <button className='font-medium text-lime-400 hover:underline'>utilize apenas texto</button>.
                         </p>
                     </div>
 
                     <button
                         type='button'
-                        className='w-full bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none font-medium group'
+                        className='w-full bg-lime-400 py-4 text-center text-sm text-lime-950 outline-none font-medium hover:bg-lime-500'
                     >
-                        Deseja <span className='text-red-400 hover:border-bottom group-hover:underline'>apagar esta nota</span>?
+                        Salvar nota
                     </button>
                 </Dialog.Content>
             </Dialog.Portal>
